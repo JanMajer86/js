@@ -146,18 +146,84 @@ const products = [
 	{ name: "Product 8", price: 90, category: "Electronics" },
 ];
 
-const categories = products.reduce((acc, product) => {
+const productsByCategory = products.reduce((acc, product) => {
 	const category = product.category;
 	if (!acc[category]) acc[category] = [];
 	acc[category].push(product);
 	return acc;
 }, {});
 
-// const categoryObj = categories.reduce(
-// 	(acc, category) => {
-// 		console.log(category);
-// 	},
-// 	{ category: "", average: 0 }
-// );
+// {
+//   Electronics: [
+//     { name: 'Product 1', price: 20, category: 'Electronics' },
+//     { name: 'Product 3', price: 40, category: 'Electronics' },
+//     { name: 'Product 6', price: 70, category: 'Electronics' },
+//     { name: 'Product 8', price: 90, category: 'Electronics' }
+//   ],
+//   Clothes: [
+//     { name: 'Product 2', price: 30, category: 'Clothes' },
+//     { name: 'Product 4', price: 50, category: 'Clothes' },
+//     { name: 'Product 5', price: 60, category: 'Clothes' },
+//     { name: 'Product 7', price: 80, category: 'Clothes' }
+//   ]
+// }
 
-console.log(categories);
+const avgPriceByCategory = Object.keys(productsByCategory).map((category) => {
+	const avg = productsByCategory[category].reduce(
+		(acc, cur) => acc + cur.price / productsByCategory[category].length,
+		0
+	);
+	return { category: category, average: avg };
+});
+
+// [
+// 	{ category: "Electronics", average: 55 },
+// 	{ category: "Clothes", average: 55 },
+// ];
+
+const avgAbove50 = avgPriceByCategory.filter(
+	(category) => category.average > 50
+);
+
+// You are given an array of objects representing a collection of employees, each with a name, salary, and department. Your task is to use map, filter, and reduce to calculate the average salary for each department and then return an array of objects containing only the departments that have an average salary above 65000.
+
+//	Array.prototype.reduce();
+// 	Array.prototype.push();
+// 	Array.prototype.keys();
+// 	Array.prototype.map();
+// 	Array.prototype.filter();
+
+// result:
+// [{ department: "HR", average: 71666 }];
+
+const employees = [
+	{ name: "John", salary: 50000, department: "IT" },
+	{ name: "Jane", salary: 60000, department: "HR" },
+	{ name: "Bob", salary: 55000, department: "IT" },
+	{ name: "Sophie", salary: 75000, department: "HR" },
+	{ name: "Mike", salary: 65000, department: "IT" },
+	{ name: "Emily", salary: 80000, department: "HR" },
+	{ name: "David", salary: 70000, department: "IT" },
+];
+
+const employeesByDepartments = employees.reduce((acc, employee) => {
+	const department = employee.department;
+	if (!acc[department]) acc[department] = [];
+	acc[department].push(employee);
+	return acc;
+}, {});
+
+const departments = Object.keys(employeesByDepartments).map((department) => {
+	const sum = employeesByDepartments[department].reduce(
+		(acc, cur) => (acc += cur.salary),
+		0
+	);
+	const avg = sum / employeesByDepartments[department].length;
+	return { department: department, avg: avg.toFixed(0) };
+});
+
+const departmentsAbove65000 = departments.filter(
+	(department) => department.avg > 65000
+);
+
+console.log(departmentsAbove65000);
