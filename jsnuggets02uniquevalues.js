@@ -33,4 +33,8 @@ const unique = [...set];
 // ["breakfast", "lunch", "dinner"];
 const result = ["all", ...unique];
 // ["all", "breakfast", "lunch", "dinner"];
-console.log(result);
+
+// one-liner
+const uniqueCategories = ["all", ...new Set(menu.map((item) => item.category))];
+
+console.log(uniqueCategories);
