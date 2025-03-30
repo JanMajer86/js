@@ -8,3 +8,26 @@ console.log(person);
 const items = { "featured-items": ["item1", "item2"] };
 console.log(items["featured-items"]);
 console.log(person["name"]);
+
+let appState = "loading";
+appState = "error";
+const keyName = "computer";
+const app = {
+	[appState]: true,
+};
+app[keyName] = "apple";
+console.log(app);
+
+const state = {
+	loading: true,
+	name: "",
+	job: "",
+};
+
+function updateState(key, value) {
+	state[key] = value;
+}
+updateState("name", "John");
+updateState("job", "plumber");
+updateState("caged", false);
+console.log(state);
