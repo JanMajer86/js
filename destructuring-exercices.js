@@ -37,12 +37,41 @@ let user = { name: "John", years: 30, isAdmin: true };
 
 console.log("EXERCISE 4");
 
-let person = [12, "Chris", "Owen"];
+// let person = [12, "Chris", "Owen"];
 
 // let firstName = person[1];
 // let lastName = person[2];
 // let age = person[0];
 
-const [age, firstName, lastName] = person;
+// const [age, firstName, lastName] = person;
 
-console.log(`Person - Age: ${age}, Name: ${firstName} ${lastName}`);
+// console.log(`Person - Age: ${age}, Name: ${firstName} ${lastName}`);
+
+console.log("EXERCISE 5");
+
+let person = ["Chris", 12, "Owen"];
+
+// const [firstName, , lastName] = person;
+// let firstName = person[0];
+// let lastName = person[2];
+
+// console.log(`Name: ${firstName} ${lastName}`);
+
+console.log("EXERCISE 6");
+
+const students = ["Christina", "Jon", "Alexandare"];
+
+// Write your code here
+const [, , lastName] = students;
+
+console.log(lastName);
+
+console.log("EXERCISE 7");
+
+const moreStudents = ["Chris", ["Ahmad", "Antigoni"], ["Toby", "Sam"]];
+
+const [student1, [student2, student3], [student4, student5]] = moreStudents;
+
+// Write your code here
+const [] = moreStudents;
+console.log(student1, student2, student3, student4, student5);
